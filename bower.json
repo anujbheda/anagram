@@ -1,0 +1,27 @@
+{
+  "name": "anagram",
+  "version": "0.0.1",
+  "authors": [
+    "Anuj Bheda <anujb89@gmail.com>"
+  ],
+  "description": "an app to find all possible anagrams of a word",
+  "keywords": [
+    "anagrams"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6",
+    "lodash": "~4.0.0",
+    "jquery": "~2.2.0",
+    "font-awesome": "~4.5.0"
+  }
+}

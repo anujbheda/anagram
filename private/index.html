@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Anagrams | Try It!</title>
+    <meta name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0"></meta>
+    <link rel="stylesheet", type="text/css", href="/public/bower/bootstrap/dist/css/bootstrap.min.css"></link>
+    <link rel="stylesheet", type="text/css", href="/public/bower/font-awesome/css/font-awesome.min.css"></link>
+    <link rel="stylesheet", type="text/css", href="/public/index.css"></link>
+  </head>
+  <body ng-app="anagram">
+    <div class="container base">
+      <div class="col-md-12 content">
+        <div class="wrapper", ng-controller="wrapperController">
+          <div class="outer-nav col-md-12 ng-cloak", ng-controller="navController">
+            <ul class="nav nav-tabs">
+              <li><a ng-click="changeTab('main')", ng-class="{active: currentTab == 'main'}">MAIN</a></li>
+              <li><a ng-click="changeTab('bonus')", ng-class="{active: currentTab == 'bonus'}">BONUS</a></li>
+            </ul>
+          </div>
+          <div class="outer-form col-md-12 ng-cloak", ng-show="currentTab=='main'">
+            <form class="form form-horizontal", ng-controller="mainController", ng-submit="solve()">
+              <div class="col-md-12">
+                <h1>Hello</h1>
+                <p class="small">Fill in the following inputs to check if the two words are anagrams!</p>
+              </div>
+              <div class="col-md-4">
+                <input class="form-control", type="text", ng-model="firstWord", ng-focus="reset('firstWord')"></input>
+              </div>
+              <div class="col-md-4">
+                <input class="form-control", type="text", ng-model="secondWord", ng-focus="reset('secondWord')"></input>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-primary", type="submit", ng-click="solve()">CHECK</button>
+              </div>
+              <div class="col-md-12">
+                <div class="answer">
+                  <div class="right", ng-class="{active: answer == 'right'}">
+                    <i class="fa fa-check fa-5x"></i>
+                    <span>Correct! The two words are anagrams</span>
+                  </div>
+                  <div class="wrong", ng-class="{active: answer == 'wrong'}">
+                    <i class="fa fa-remove fa-5x"></i>
+                    <span>Wrong, :( The two words are not anagrams</span>
+                  </div>
+                  <div class="blank", ng-class="{active: answer == 'blank'}">
+                    <i class="fa fa-info fa-5x"></i>
+                    <span>Ahh, Need some words mate!</span>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="outer-form col-md-12 ng-cloak", ng-show="currentTab=='bonus'">
+            <form class="form form-horizontal", ng-controller="bonusController", ng-submit="find()">
+              <div class="col-md-12">
+                <h1>Hello</h1>
+                <p class="small">
+                  <span>Fill in a word to find all its possible anagrams</span>
+                  <br />
+                  <span style="font-style: italic">HINT: aeprs</span>
+                </p>
+              </div>
+              <div class="col-md-4">
+                <input class="form-control", type="text", ng-model="word", ng-focus="reset('word')"></input>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-primary", type="submit", ng-click="find()">FIND</button>
+              </div>
+              <div class="col-md-12">
+                <div class="answer">
+                  <div class="wrong", ng-class="{active: results && results.length == 0}">
+                    <ul>
+                      <li>Oops! No matches found. Try again?</li>
+                    </ul>
+                  </div>
+                  <div class="right", ng-class="{active: results && results.length > 0}">
+                    <ul>
+                      <li ng-repeat="result in results">//result//&nbsp;|&nbsp;</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript", src="/public/bower/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript", src="/public/bower/lodash/dist/lodash.min.js"></script>
+    <script type="text/javascript", src="/public/bower/angular/angular.min.js"></script>
+    <script type="text/javascript", src="/public/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript", src="/public/index.js"></script>
+  </body>
+</html>
